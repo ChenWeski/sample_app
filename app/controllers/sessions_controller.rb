@@ -5,9 +5,11 @@ class SessionsController < ApplicationController
 
   def create
   	user = User.find_by(email: params[:session][:email].downcase)
+
   	if (user && user.authenticate(params[:session][:password]))
+  		
   		login(user)
-  		redirect_to user  		
+  		forwarding_url user  		
 
   	else
   		flash.now[:danger] = "invalid password/email"
