@@ -9,9 +9,31 @@
                     <li>
                         <%= link_to "Help",  help_path %>
                     </li>
-                    <li>
-                        <%= link_to "Log in", '#' %>
-                    </li>
+
+                    <%if logged_in?%>
+                        <li>
+                        <%= link_to "Users", '#' %>
+                        </li>
+                        
+                        <li>
+                        <%= link_to "profile", current_user %>
+                        </li>
+                        <li>
+                        <%= link_to "Settings", '#' %>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                        <li>
+                        <%= link_to "logout", logout_path, method: :delete %>
+                        </li>
+                        </li>
+
+                    <%else%>
+                        <li>
+                            <%= link_to "Log in", '#' %>
+                        </li>
+
+                    <%end%>
                 </ul> 
             </nav>
     </div>
